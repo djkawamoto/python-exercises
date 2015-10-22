@@ -1,8 +1,9 @@
 #Weeple Attack!
 #by Daniel Kawamoto
 
-#BUG LIST
-#Fix error during attack when weeples < 0
+# TO-DO's
+# Fix error during attack when weeples < 0
+# Get rid of global variables and use 'class'
 
 
 import time
@@ -143,7 +144,7 @@ def attack():
     rebels = int(rebels - (weeples *.3)//1)
     if weeples >0:
         print("BATTLE RESULTS!\n\nREBELS REMAINING: {}\nWeeples lost: {}\nWeeples gained: {}\nTOTAL WEEPLES: {}\nLoot gained: {}\nTOTAL LOOT: {}\n".format(rebels, weeples_lost, converted, weeples, loot_gained, loot))
-    
+
         def attack_or_retreat():
             global weeples
             battle_choice = input("What would you like to do, {}?\n1. Attack again\n2. Retreat (You will lose 50\% of your weeples)\n".format(name))
@@ -157,7 +158,7 @@ def attack():
                 attack_again()
     else:
         game_over()
-        
+
     def attack_again():
         global weeples
         global loot
