@@ -6,11 +6,11 @@ import wx
 import wx.lib.agw.multidirdialog as MDD
 
 # THIS IS A PLACEHOLDER FOR THE ASSUMED PRE-EXISTING CODE
-# These would likely be imported from a separate module, but 
+# These would likely be imported from a separate module, but
 #for the sake of this drill dummy functions are below.
 def checks_for_changes_in_folder():
     pass
-    
+
 def copies_files_to_new_location():
     pass
 
@@ -19,11 +19,11 @@ class windowClass(wx.Frame):
         super(windowClass, self).__init__(*args, **kwargs)
         self.currentDirectory = os.getcwd()
         self.gui()
-    
+
     def gui(self):
         panel = wx.Panel(self)
         menuBar = wx.MenuBar()
-        
+
         #This creates the necessary menu(s)
         fileMenu = wx.Menu()
         #ADD "Change 'From' folder..."
@@ -41,7 +41,7 @@ class windowClass(wx.Frame):
         #EXIT function
         exitItem = wx.MenuItem(fileMenu, wx.ID_ANY, '&Quit\tCtrl+Q')
         fileMenu.AppendItem(exitItem)
-        
+
         #attaches menu items to the menu
         menuBar.Append(fileMenu, '&File')
         self.SetMenuBar(menuBar)
@@ -49,7 +49,7 @@ class windowClass(wx.Frame):
         self.Bind(wx.EVT_MENU, self.ToButton, changeToFolderItem)
         self.Bind(wx.EVT_MENU, self.CheckButton, checkFilesItem)
         self.Bind(wx.EVT_MENU, self.Quit, exitItem)
-        
+
         #TOOLBAR W/ ICONS: This creates a tool bar with icons.
         toolBar = self.CreateToolBar(style=(wx.TB_HORZ_LAYOUT | wx.TB_TEXT))
         toolBar.SetToolBitmapSize((32,32))
@@ -65,12 +65,12 @@ class windowClass(wx.Frame):
         checkFilesButton = toolBar.AddLabelTool(wx.ID_ANY, 'Check Files',
                                                 wx.Bitmap('check.png'))
         self.Bind(wx.EVT_TOOL, self.CheckButton, checkFilesButton)
-        
+
         toolBar.Realize()
-        
+
         self.SetTitle('File Transfer GUI Drill Window')
         self.Show(True)
-        
+
     #BUTTON FUNCTIONS
     def FromButton(self, event):
         dlg = MDD.MultiDirDialog(self, title="Choose a directory to check for changes:",
@@ -82,7 +82,7 @@ class windowClass(wx.Frame):
             for path in paths:
                 print path
         dlg.Destroy()
-        
+
     def ToButton(self, event):
         dlg = MDD.MultiDirDialog(self, title="Choose the location to copy files TO:",
                                  defaultPath=self.currentDirectory,
@@ -93,7 +93,7 @@ class windowClass(wx.Frame):
             for path in paths:
                 print path
         dlg.Destroy()
-    
+
     def CheckButton(self, event):
         print "Theoretically checking for files..."
         checks_for_changes_in_folder()
@@ -105,12 +105,12 @@ class windowClass(wx.Frame):
             okBox = wx.MessageDialog(None, 'Your files have been copied.', 'Status', wx.OK)
             okBox.ShowModal()
             okBox.Destroy()
-        else: 
+        else:
             print "No new files or modified files were found." #add logic for False
 
     def Quit(self, event):
         self.Close()
-    
+
 def main():
     app = wx.App()
     windowClass(None)
@@ -119,48 +119,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
