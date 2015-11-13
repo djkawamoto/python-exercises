@@ -2,11 +2,13 @@
 # File_XFR_UI.py
 # This drill uses wxPython which is intended to be used with Python 2.7
 
+from __future__ import unicode_literals
 import os
 import wx
 import wx.lib.agw.multidirdialog as MDD
 import shutil
 import time
+
 
 class windowClass(wx.Frame):
 
@@ -98,11 +100,21 @@ class windowClass(wx.Frame):
 
         now = int(time.time())
         fileCount = 0
-        for _file in source_folder:
+
+
+        
+        for _file in os.listdir(str(source_folder)):
 
             ###
             ### NEED TO CHANGE THE LOGIC HERE TO INCLUDE dB data
             ###
+
+            print ("\n\n")
+            print (_file)
+            print (os.path.getmtime(_file))
+            #print (os.stat(source_folder))
+            #print (os.stat(os.path(source_folder)))
+            #print (os.stat(os.path(source_folder)).st_mtime)
 
             if int(os.stat(os.path(source_folder)).st_mtime) > (now - 86400):
                 shutil.copy2(source_folder+'%s' % _file, dst+'%s' % _file)
@@ -110,7 +122,8 @@ class windowClass(wx.Frame):
                 print fileCount, " files copied."
             else:
                 print "No new files or modified files were found."
-
+                
+        # BELOW IS JUST A COPY OF WHAT'S ABOVE,PRIOR TO MAKING CHANGES - FOR REFERENCE
         # for _file in source_folder:
         #     ###
         #     ### NEED TO CHANGE THE LOGIC HERE TO INCLUDE dB data

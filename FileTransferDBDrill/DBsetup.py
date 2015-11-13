@@ -10,7 +10,7 @@ def TableCreate():
     print currenttime
 
 
-sql = "SELECT * FROM FileCheckTimes;" #WHERE unix =?"
+sql = "SELECT unix FROM FileCheckTimes WHERE ID = (SELECT MAX(ID) FROM FileCheckTimes);" #"SELECT * FROM FileCheckTimes;" #WHERE unix =?"
 currenttime = time.time()
 
 def TimeOfRecord():
@@ -22,4 +22,9 @@ def TestConn():
     c.execute(sql)
     print currenttime
 
-TimeOfRecord()
+def GetMostRecentEntry():
+    c.execute(sql)
+    x = c.fetchall()
+    print x
+
+GetMostRecentEntry()
