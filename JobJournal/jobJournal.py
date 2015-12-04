@@ -10,6 +10,8 @@ from tkinter import messagebox as mb
 
 '''
 Don't forget to set the default values of the comboboxes!!!
+Rewrite to include proper use of classes and separate GUI setup from init function.
+check the linda example using pack and grid together.
 '''
 
 class MainApp:
@@ -17,8 +19,6 @@ class MainApp:
     def __init__(self, master):
         master.title("DAILY JOB JOURNAL")
         self.style = ttk.Style()
-
-        ''' check the linda example using pack and grid together.'''
 
         # self.frame_content = ttk.Frame(master)
         # self.frame_content.grid()
