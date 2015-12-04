@@ -1,7 +1,7 @@
 #!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
 # jobJournal.py
 
-import tkinter
+from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox as mb
 # import os as os
@@ -11,16 +11,14 @@ from tkinter import messagebox as mb
 '''
 Don't forget to set the default values of the comboboxes!!!
 '''
-# def main():
-#     root = tkinter.Tk()
-#     MainApp = MainApp(root)
-#     root.mainloop()
 
 class MainApp:
 
     def __init__(self, master):
         master.title("DAILY JOB JOURNAL")
         self.style = ttk.Style()
+
+        ''' check the linda example using pack and grid together.'''
 
         # self.frame_content = ttk.Frame(master)
         # self.frame_content.grid()
@@ -54,7 +52,7 @@ class MainApp:
         # notes text entry box
         self.notes = ttk.Entry
         # , rowspan = 5, columnspan = 3)
-        self.notes.grid(self, row=5, column=0)
+        self.notes.grid(row=5, column=0)
 
         # submit button
         submit_button = ttk.Button
@@ -68,8 +66,13 @@ class MainApp:
     def clear(self):
         self.notes.delete(1.0, 'end')
 
-if __name__ == '__main__':
-    # main()
-    root = tkinter.Tk()
+def main():
+    root = Tk()
     MainApp = MainApp(root)
     root.mainloop()
+
+if __name__ == '__main__':
+    main()
+    # root = Tk()
+    # mainapp = MainApp(root)
+    # root.mainloop()
