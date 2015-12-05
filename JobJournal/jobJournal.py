@@ -1,7 +1,7 @@
 #!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
 # jobJournal.py
 
-from tkinter import *
+import tkinter
 from tkinter import ttk
 from tkinter import messagebox as mb
 # import os as os
@@ -13,6 +13,7 @@ Don't forget to set the default values of the comboboxes!!!
 Rewrite to include proper use of classes and separate GUI setup from init function.
 check the linda example using pack and grid together.
 '''
+
 
 class MainApp:
 
@@ -33,7 +34,7 @@ class MainApp:
         ttk.Label(master, text="Project:").grid(row=0, column=1, sticky="W")
         # project text entry box
         self.project = ttk.Entry(master)
-        self.project.grid(row=1, column=1)
+        self.project.grid(row=1, column=1, columnspan=2)
 
         # start label
         ttk.Label(master, text="Start").grid(row=2, column=0, sticky="W")
@@ -50,25 +51,28 @@ class MainApp:
         # notes label
         ttk.Label(master, text="Notes:").grid(row=4, column=0, sticky="W")
         # notes text entry box
-        self.notes = ttk.Entry
+        self.notes = ttk.Entry(master)
         # , rowspan = 5, columnspan = 3)
-        self.notes.grid(row=5, column=0)
+        self.notes.grid()#row=5, column=0, rowspan=5, columnspan=3 sd)
 
         # submit button
-        submit_button = ttk.Button
-        submit_button.grid(self, row=3, column=2, text="Submit")
+        submit_button = ttk.Button(master, text="Submit").grid(row=3, column=2)
+        # submit_button.grid(master, row=3, column=2) #, text="Submit"
 
     def submit(self):
         # write to CSV
         # clear form
-        mb.showinfo(title='Success!', message='Body text updated.')
+        date_submitted = 'THE DATE NEEDS TO BE CHANGED'  # Get value of date combobox
+        mb.showinfo(title='Success!', message='Your entry for ' +
+                    date_submitted + ' has been submitted.')
 
     def clear(self):
         self.notes.delete(1.0, 'end')
 
+
 def main():
-    root = Tk()
-    MainApp = MainApp(root)
+    root = tkinter.Tk()
+    MainApp(root)
     root.mainloop()
 
 if __name__ == '__main__':
