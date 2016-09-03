@@ -1,7 +1,6 @@
-# tech-academy-drills
-This repository is a collection of drills completed while at The Tech Academy - a software developer school in Portland, OR. For all of these drills, a scenario was provided but how to write the code was left up to me.
+#Python Exercises
+This repository is a collection of drills completed while at The Tech Academy - a full stack .NET software developer school in Portland, OR. For all of these drills, a scenario was provided but the code for each solution was authored by me.
 
-##PYTHON
 ###FileTransferUIProject
 
 An exercise to write script for the following scenario:
